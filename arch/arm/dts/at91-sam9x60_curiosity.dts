@@ -16,24 +16,26 @@
 
 	ahb {
 		apb {
-			flx0: flexcom@f801c600 {
+			flx11: flexcom@f0020000 {
 				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
 				status = "okay";
-
-				i2c@600 {
-					compatible = "atmel,sama5d2-i2c";
-					reg = <0x600 0x200>;
-					pinctrl-names = "default";
-					pinctrl-0 = <&pinctrl_flx0>;
+			
+				i2c11: i2c@600 {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					clocks = <&pmc PMC_TYPE_PERIPHERAL 5>;
+					dmas = <0>, <0>;
+					pinctrl-names = "default";
+					pinctrl-0 = <&pinctrl_i2c11_default>;
+					i2c-analog-filter;
+					i2c-digital-filter;
+					i2c-digital-filter-width-ns = <35>;
 					status = "okay";
-
+			
 					eeprom@53 {
 						compatible = "atmel,24c02";
 						reg = <0x53>;
 						pagesize = <16>;
+						status = "okay";
 					};
 				};
 			};
@@ -77,10 +79,10 @@
 					};
 				};
 
-					pinctrl_flx0: flx0_default {
+					pinctrl_i2c11_default: pinctrl_i2c11 {
 						atmel,pins =
-							<AT91_PIOA 0 AT91_PERIPH_A AT91_PINCTRL_NONE
-							 AT91_PIOA 1 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+							<AT91_PIOB 19 AT91_PERIPH_C AT91_PINCTRL_PULL_UP_DEGLITCH
+							 AT91_PIOB 20 AT91_PERIPH_C AT91_PINCTRL_PULL_UP_DEGLITCH>;
 					};
 
 					pinctrl_onewire_tm_default: onewire_tm_default {
