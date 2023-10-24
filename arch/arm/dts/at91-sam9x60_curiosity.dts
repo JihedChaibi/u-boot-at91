@@ -95,7 +95,7 @@
 
 	chosen {
 		stdout-path = &dbgu;
-		i2c0 = &flx0;
+		i2c0 = &flx11;
 	};
 
 	clocks {
@@ -192,6 +192,6 @@
 };
 
 &macb0 {
-	phy-mode = "rmii";
+	phy-mode = "mii";
 	status = "okay";
 };
