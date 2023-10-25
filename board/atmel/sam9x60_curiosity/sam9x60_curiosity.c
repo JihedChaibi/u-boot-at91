@@ -28,7 +28,7 @@ void at91_prepare_cpu_var(void);
 static void board_pins_init(void)
 {
 	at91_set_pio_output(AT91_PIO_PORTA, 31, 1);	/* USB  */
-	at91_set_pio_output(AT91_PIO_PORTB, 3, 0);	/* ETH CONFIG2 */
+	/* at91_set_pio_output(AT91_PIO_PORTB, 3, 0);	 ETH CONFIG2 */
 	at91_set_pio_output(AT91_PIO_PORTB, 25, 1);	/* ETH RESET */
 }
 
