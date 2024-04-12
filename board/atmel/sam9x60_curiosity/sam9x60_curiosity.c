@@ -28,7 +28,6 @@ void at91_prepare_cpu_var(void);
 static void board_pins_init(void)
 {
 	at91_set_pio_output(AT91_PIO_PORTA, 31, 1);	/* USB  */
-	/* at91_set_pio_output(AT91_PIO_PORTB, 3, 0);	 ETH CONFIG2 */
 	at91_set_pio_output(AT91_PIO_PORTB, 25, 1);	/* ETH RESET */
 }
 
@@ -70,8 +69,10 @@ int board_init(void)
 	/* address of boot parameters */
 	gd->bd->bi_boot_params = gd->bd->bi_dram[0].start + 0x100;
 
+	/*
+ 	TO-DO: find a better way to initialize pins state
 	board_pins_init();
-
+	*/
 	return 0;
 }
 
