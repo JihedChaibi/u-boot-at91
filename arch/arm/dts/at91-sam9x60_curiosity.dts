@@ -91,6 +91,11 @@
 							 AT91_PIOB 14 AT91_PERIPH_A AT91_PINCTRL_NONE	/* PB14 periph A */
 							 AT91_PIOB 15 AT91_PERIPH_A AT91_PINCTRL_NONE>;	/* PB15 periph A */
 					};
+
+					pinctrl_macb0_rst: macb0_rst {
+						atmel,pins =
+							<AT91_PIOB 25 AT91_PERIPH_GPIO (AT91_PINCTRL_OUTPUT | AT91_PINCTRL_OUTPUT_VAL(1))>;
+					};
 				};
 
 				nand {
@@ -225,7 +230,16 @@
 
 &macb0 {
 	phy-mode = "mii";
+	#address-cells = <1>;
+	#size-cells = <0>;
 	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_macb0_mii>;
+	pinctrl-0 = <&pinctrl_macb0_mii &pinctrl_macb0_rst>;
 	status = "okay";
+	ethernet-phy@1 {
+		reg = <0x1>;
+		interrupt-parent = <&pioB>;
+		interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+		reset-gpios = <&pioB 25 GPIO_ACTIVE_LOW>;
+		phy-mode = "mii";
+	};
 };
