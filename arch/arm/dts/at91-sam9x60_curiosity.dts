@@ -41,10 +41,10 @@
 					i2c-digital-filter-width-ns = <35>;
 					status = "okay";
 
-					eeprom@53 {
+					eeprom@56 {
 						compatible = "atmel,24c02";
-						reg = <0x53>;
-						pagesize = <16>;
+						reg = <0x56>;
+						pagesize = <8>;
 						status = "okay";
 					};
 				};
