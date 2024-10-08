@@ -174,7 +174,6 @@
 
 		nand@3 {
 			reg = <0x3 0x0 0x800000>;
-			atmel,rb = <0>;
 			rb-gpios = <&pioD 5 GPIO_ACTIVE_HIGH>;
 			cs-gpios = <&pioD 4 GPIO_ACTIVE_HIGH>;
 			nand-bus-width = <8>;
@@ -219,9 +218,19 @@
 					reg = <0x200000 0x600000>;
 				};
 
-				rootfs@800000 {
-					label = "rootfs";
-					reg = <0x800000 0x1f800000>;
+				ubootscript@800000 {
+					label = "ubootscript";
+					reg = <0x800000 0x40000>;
+				};
+
+				rootfs@840000 {
+					label = "rootfs_a";
+					reg = <0x840000 0xfc00000>;
+				};
+
+				rootfs@10440000 {
+					label = "rootfs_b";
+					reg = <0x10440000 0xfc00000>;
 				};
 			};
 		};
