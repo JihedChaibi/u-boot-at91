@@ -209,28 +209,41 @@
 				};
 
 				dtb@180000 {
-					label = "device tree";
+					label = "dts_a";
 					reg = <0x180000 0x80000>;
 				};
 
 				kernel@200000 {
-					label = "kernel";
+					label = "kernel_a";
 					reg = <0x200000 0x600000>;
 				};
+				dtb@800000 {
+					label = "dts_b";
+					reg = <0x800000 0x80000>;
+				};
 
-				ubootscript@800000 {
+				kernel@880000 {
+					label = "kernel_b";
+					reg = <0x880000 0x600000>;
+				};
+
+				ubootscript@E80000 {
 					label = "ubootscript";
-					reg = <0x800000 0x40000>;
+					reg = <0xE80000 0x40000>;
+				};
+				conf@EC0000 {
+					label = "conf";
+					reg = <0xEC0000 0x40000>;
 				};
 
-				rootfs@840000 {
+				rootfs@F00000 {
 					label = "rootfs_a";
-					reg = <0x840000 0xfc00000>;
+					reg = <0xF00000 0xF880000>;
 				};
 
-				rootfs@10440000 {
+				rootfs@10780000 {
 					label = "rootfs_b";
-					reg = <0x10440000 0xfc00000>;
+					reg = <0x10780000 0xF880000>;
 				};
 			};
 		};
