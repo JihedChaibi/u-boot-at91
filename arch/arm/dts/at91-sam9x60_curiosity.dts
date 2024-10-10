@@ -263,5 +263,6 @@
 		interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
 		reset-gpios = <&pioB 25 GPIO_ACTIVE_LOW>;
 		phy-mode = "mii";
+		status = "okay";
 	};
 };
